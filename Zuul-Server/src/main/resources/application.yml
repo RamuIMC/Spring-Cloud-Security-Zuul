@@ -1,0 +1,9 @@
+zuul:
+  routes:
+    user: 
+      url: http://192.168.2.3:8022
+ribbon:
+  eureka:
+    enabled: false
+server:
+  port: 8021

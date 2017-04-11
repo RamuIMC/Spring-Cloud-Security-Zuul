@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: user
+server:
+  port: 8022
+  host: 192.168.2.3
