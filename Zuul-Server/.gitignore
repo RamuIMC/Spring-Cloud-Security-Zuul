@@ -1,0 +1,16 @@
+*.class
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.ear
+*.war.original
+.settings/
+.classpath
+.project
+/target/Zuul-Server/
+/target/classes/
+/target/maven-status/
+/target/m2e-wtp/
+/target/maven-archiver/
