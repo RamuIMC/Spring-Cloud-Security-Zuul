@@ -17,7 +17,7 @@ public class UserApplication {
 
 	}
 	
-	@RequestMapping(value="/getName/{2}",produces=MediaType.APPLICATION_JSON_VALUE)
+	/*@RequestMapping(value="/getName/{2}",produces=MediaType.APPLICATION_JSON_VALUE)
 	public UserDto getName(){
 		UserDto userDto= new UserDto();
 		
@@ -27,5 +27,5 @@ public class UserApplication {
 		return userDto;
 		
 	}
-
+*/
 }
