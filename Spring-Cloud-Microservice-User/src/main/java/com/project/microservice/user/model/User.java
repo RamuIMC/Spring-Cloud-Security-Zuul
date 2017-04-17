@@ -2,6 +2,7 @@ package com.project.microservice.user.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -16,8 +17,7 @@ public class User implements Serializable {
 	@Id
 	private int id;
 
-	@Column(name="active")
-	private boolean isActive;
+	private byte active;
 
 	@Lob
 	private String email;
@@ -33,6 +33,10 @@ public class User implements Serializable {
 	@Column(name="user_name")
 	private String userName;
 
+	//bi-directional many-to-one association to UserRole
+	@OneToMany(mappedBy="user")
+	private List<UserRole> userRoles;
+
 	public User() {
 	}
 
@@ -43,14 +47,13 @@ public class User implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
 
-	public boolean isActive() {
-		return isActive;
+	public byte getActive() {
+		return this.active;
 	}
 
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
+	public void setActive(byte active) {
+		this.active = active;
 	}
 
 	public String getEmail() {
@@ -83,6 +86,28 @@ public class User implements Serializable {
 
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+
+	public List<UserRole> getUserRoles() {
+		return this.userRoles;
+	}
+
+	public void setUserRoles(List<UserRole> userRoles) {
+		this.userRoles = userRoles;
+	}
+
+	public UserRole addUserRole(UserRole userRole) {
+		getUserRoles().add(userRole);
+		userRole.setUser(this);
+
+		return userRole;
+	}
+
+	public UserRole removeUserRole(UserRole userRole) {
+		getUserRoles().remove(userRole);
+		userRole.setUser(null);
+
+		return userRole;
 	}
 
 }

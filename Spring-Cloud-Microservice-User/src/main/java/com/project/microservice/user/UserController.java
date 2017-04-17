@@ -22,8 +22,12 @@ public class UserController {
 	@Autowired
 	private UserService UserService;
 	
-	@RequestMapping(value="/getNames")
+	@RequestMapping(value="/getUser/getNames")
 	public List<UserDto> getNames(){
+		return UserService.getNames();		
+	}
+	@RequestMapping(value="/testUser/getNames")
+	public List<UserDto> getTestNames(){
 		return UserService.getNames();		
 	}
 

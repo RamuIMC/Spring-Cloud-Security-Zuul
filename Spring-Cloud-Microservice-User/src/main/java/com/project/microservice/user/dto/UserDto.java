@@ -4,6 +4,7 @@ public class UserDto {
 	
 	private int userId;
 	private String userName;
+	private String token;
 	
 	public int getUserId() {
 		return userId;
@@ -16,6 +17,12 @@ public class UserDto {
 	}
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String token) {
+		this.token = token;
 	}
 	
 	
