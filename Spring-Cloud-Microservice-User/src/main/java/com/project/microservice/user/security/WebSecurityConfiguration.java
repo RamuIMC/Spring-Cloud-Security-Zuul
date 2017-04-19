@@ -65,7 +65,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	        TokenStoreUserApprovalHandler handler = new TokenStoreUserApprovalHandler();
 	        handler.setTokenStore(tokenStore);
 	        handler.setRequestFactory(new DefaultOAuth2RequestFactory(clientDetailsService));
-	        handler.setClientDetailsService(clientDetailsService);
+	       handler.setClientDetailsService(clientDetailsService);
 	        return handler;
 	    }
 	     

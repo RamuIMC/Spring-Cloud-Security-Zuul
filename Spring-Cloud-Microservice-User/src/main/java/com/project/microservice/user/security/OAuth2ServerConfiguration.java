@@ -68,11 +68,11 @@ public class OAuth2ServerConfiguration {
         @Qualifier("authenticationManagerBean")
         private AuthenticationManager authenticationManager;
 
-        
+        @Autowired
         private CustomUserDetailsService userDetailsService;
         
         
-        private ClientAdUserDetailsService clientAdUserDetailsService;
+        //private ClientAdUserDetailsService clientAdUserDetailsService;
 
         @Override
         public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
@@ -85,7 +85,7 @@ public class OAuth2ServerConfiguration {
             // @formatter:on
         }
         
-        public AuthorizationServerConfiguration() throws Exception {
+        /*public AuthorizationServerConfiguration() throws Exception {
 
             ClientDetailsService clientDetailsService = new InMemoryClientDetailsServiceBuilder()
                     .withClient("clientapp")
@@ -105,12 +105,21 @@ public class OAuth2ServerConfiguration {
         @Bean
         public ClientDetailsService clientDetailsService() throws Exception {
             return clientAdUserDetailsService;
-        }
+        }*/
 
-        @Override
+       @Override
         public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
             // @formatter:off
-            clients.withClientDetails(clientDetailsService());
+            clients.inMemory().withClient("clientapp")
+            .secret("123456")
+            .authorizedGrantTypes("password","refresh_token","client_credentials")
+            .authorities("ROLE_CLIENT", "ROLE_TRUSTED_CLIENT")
+            .scopes("read","write")
+            .resourceIds("message")
+            .accessTokenValiditySeconds(120)//Access token is only valid for 2 minutes.
+            .refreshTokenValiditySeconds(600)//Refresh token is only valid for 10 minutes.
+            .and()
+            .build();
             // @formatter:on
         }
         
@@ -119,7 +128,8 @@ public class OAuth2ServerConfiguration {
             //oauthServer.realm("sparklr2/client");
             oauthServer.allowFormAuthenticationForClients();
         }
-
+       
+      
     }
 
 }
