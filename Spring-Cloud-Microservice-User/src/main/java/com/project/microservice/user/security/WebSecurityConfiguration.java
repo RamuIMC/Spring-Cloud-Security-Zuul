@@ -26,40 +26,36 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 @EnableGlobalMethodSecurity(prePostEnabled=true)
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
-	 @Autowired
-	  private UserDetailsService userDetailsService;
-	 
-	 @Autowired
-	    private ClientDetailsService clientDetailsService;
-	 
-	  @Override
+	 	@Autowired
+	 	private UserDetailsService userDetailsService;
+	 	 
+	  	@Override
 	    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 	        auth.userDetailsService(userDetailsService);
-	       // auth.authenticationProvider(accountAuthenticationProvider);
 	    }
 
-	 @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+		@Bean
+	    public PasswordEncoder passwordEncoder() {
+	        return new BCryptPasswordEncoder();
+	    }
 	 
-	 @Override
+	 	@Override
 	    @Bean
 	    public AuthenticationManager authenticationManagerBean() throws Exception {
 	        return super.authenticationManagerBean();
 	    }
-	 @Bean
+	 	@Bean
 	    public JwtAccessTokenConverter jwtAccessTokenConverter() {
 	        final JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
 	        jwtAccessTokenConverter.setSigningKey("ASDFASFsdfsdfsdfsfadsf234asdfasfdas");
 	        return jwtAccessTokenConverter;
 	    }
-	 @Bean
+	 	@Bean
 	    public TokenStore tokenStore() {
 	        return new JwtTokenStore(jwtAccessTokenConverter());
 	    }
 	 
-	 @Bean
+	 	/*@Bean
 	    @Autowired
 	    public TokenStoreUserApprovalHandler userApprovalHandler(TokenStore tokenStore){
 	        TokenStoreUserApprovalHandler handler = new TokenStoreUserApprovalHandler();
@@ -75,7 +71,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	        TokenApprovalStore store = new TokenApprovalStore();
 	        store.setTokenStore(tokenStore);
 	        return store;
-	    }
+	    }*/
 	 @Override
 	  protected void configure(HttpSecurity httpSecurity) throws Exception {
 	    httpSecurity

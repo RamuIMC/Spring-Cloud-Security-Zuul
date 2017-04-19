@@ -30,9 +30,6 @@ public class OAuth2ServerConfiguration {
     protected static class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
 
         @Autowired
-        private JwtAccessTokenConverter jwtAccessTokenConverter;
-
-        @Autowired
         private TokenStore tokenStore;
 
         @Override
@@ -71,45 +68,20 @@ public class OAuth2ServerConfiguration {
         @Autowired
         private CustomUserDetailsService userDetailsService;
         
-        
-        //private ClientAdUserDetailsService clientAdUserDetailsService;
-
         @Override
         public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-            // @formatter:off
+            
             endpoints
                     .tokenStore(tokenStore)
                     .authenticationManager(authenticationManager)
                     .accessTokenConverter(jwtAccessTokenConverter)
                     .userDetailsService(userDetailsService);
-            // @formatter:on
+            
         }
-        
-        /*public AuthorizationServerConfiguration() throws Exception {
-
-            ClientDetailsService clientDetailsService = new InMemoryClientDetailsServiceBuilder()
-                    .withClient("clientapp")
-                    .secret("123456")
-                    .authorizedGrantTypes("password","refresh_token","client_credentials")
-                    .authorities("ROLE_CLIENT", "ROLE_TRUSTED_CLIENT")
-                    .scopes("read","write")
-                    .resourceIds("message")
-                    .accessTokenValiditySeconds(120)//Access token is only valid for 2 minutes.
-                    .refreshTokenValiditySeconds(600)//Refresh token is only valid for 10 minutes.
-                    .and()
-                    .build();
-            UserDetailsService userDetailsService = new CustomUserDetailsService();
-            clientAdUserDetailsService = new ClientAdUserDetailsService(clientDetailsService,   userDetailsService);
-        }
-
-        @Bean
-        public ClientDetailsService clientDetailsService() throws Exception {
-            return clientAdUserDetailsService;
-        }*/
 
        @Override
         public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-            // @formatter:off
+            
             clients.inMemory().withClient("clientapp")
             .secret("123456")
             .authorizedGrantTypes("password","refresh_token","client_credentials")
@@ -120,7 +92,7 @@ public class OAuth2ServerConfiguration {
             .refreshTokenValiditySeconds(600)//Refresh token is only valid for 10 minutes.
             .and()
             .build();
-            // @formatter:on
+            
         }
         
         @Override
