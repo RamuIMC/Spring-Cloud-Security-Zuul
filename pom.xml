@@ -8,6 +8,8 @@
   <modules>
   	<module>Zuul-Server</module>
   	<module>Spring-Cloud-Microservice-User</module>
+  	<module>SpringBoot-Oauth2-Authorization-Server</module>
+  	<module>SpringBoot-Oauth2-Resource-Server</module>
   </modules>  
   <parent>
 		<groupId>org.springframework.boot</groupId>
