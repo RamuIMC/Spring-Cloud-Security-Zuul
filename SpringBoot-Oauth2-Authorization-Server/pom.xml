@@ -7,6 +7,18 @@
   </parent>
   <groupId>springboot.security.oauth2.authorization</groupId>
   <artifactId>SpringBoot-Oauth2-Authorization-Server</artifactId>
-  <name>SpringBoot-Oauth2-Authorization-Server</name>
-  
+  <name>SpringBoot-Oauth2-Authorization-Server</name>  
+  <properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+		
+	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 </project>
