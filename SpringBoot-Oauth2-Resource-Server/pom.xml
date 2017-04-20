@@ -8,4 +8,18 @@
   <groupId>springboot.oauth2.resource.server</groupId>
   <artifactId>SpringBoot-Oauth2-Resource-Server</artifactId>
   <name>SpringBoot-Oauth2-Resource-Server</name>
+  
+  <properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+		
+	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 </project>
