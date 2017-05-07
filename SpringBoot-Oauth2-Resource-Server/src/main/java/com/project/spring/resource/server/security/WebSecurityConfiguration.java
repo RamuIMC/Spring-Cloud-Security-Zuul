@@ -23,6 +23,10 @@ import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
+import org.springframework.security.web.access.channel.ChannelProcessingFilter;
+
+import com.project.spring.resource.server.CustomCORSFilter;
+
 
 @Configuration
 @EnableWebSecurity
@@ -45,7 +49,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 		  protected void configure(HttpSecurity httpSecurity) throws Exception {
 		    httpSecurity
 		      .csrf()
-		        .disable().authorizeRequests()
+		        .disable()
+		        .authorizeRequests()
 		        .antMatchers("/login", "/oauth/authorize", "/oauth/confirm_access","/oauth/token").permitAll();
 		 }
 }
