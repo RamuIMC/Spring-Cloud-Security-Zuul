@@ -84,6 +84,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	    httpSecurity
 	      .csrf()
 	        .disable().addFilterBefore(new CustomCORSFilter(), ChannelProcessingFilter.class)
-	        .authorizeRequests().antMatchers("/login", "/oauth/authorize", "/oauth/confirm_access","/oauth/token").permitAll();
+	        .authorizeRequests().antMatchers("/login", "/oauth/authorize", "/oauth/confirm_access","/oauth/token","/oauth/token_key").permitAll();
 	 }
 }
